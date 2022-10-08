@@ -22,6 +22,7 @@ body {
 #result {
     text-align: end;
     min-width: 384px;
+    min-height: 37px;
     font-size: 32px;
 
     border: 1px solid black;
@@ -53,7 +54,7 @@ body {
 
 .number,
 .non-number,
-#output {
+#enter {
     width: 86px;
     font-size: 24px;
     border: 1px solid gray;
@@ -63,7 +64,7 @@ body {
     background-color: ghostwhite;
 }
 
-#output {
+#enter {
     background-color: lightcyan;
     color: black;
 }
