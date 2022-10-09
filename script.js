@@ -1,5 +1,3 @@
-let answer = '';
-
 function calculation(arithmetic){
     let tempAnswer = 0;
 
@@ -46,6 +44,8 @@ function calculation(arithmetic){
     return tempAnswer;
 }
 
+let answer = '';
+
 let leftIndex = [];
 let rightIndex = [];
 
@@ -84,6 +84,90 @@ buttons.forEach(button => {
                 result.textContent += button.textContent;
             }
         });
+    }
+})
+
+window.addEventListener('keydown', function(e){
+    switch(e.key){
+        case '(':
+            buttons[0].click();
+            break;
+
+        case ')':
+            buttons[1].click();
+            break;
+
+        case '%':
+            buttons[2].click();
+            break;
+
+        case 'Backspace':
+            buttons[3].click();
+            break;
+
+        case '7':
+            buttons[4].click();
+            break;
+
+        case '8':
+            buttons[5].click();
+            break;
+
+        case '9':
+            buttons[6].click();
+            break;
+
+        case '/':
+            buttons[7].click();
+            break;
+
+        case '4':
+            buttons[8].click();
+            break;
+
+        case '5':
+            buttons[9].click();
+            break;
+
+        case '6':
+            buttons[10].click();
+            break;
+
+        case 'x':
+            buttons[11].click();
+            break;
+
+        case '1':
+            buttons[12].click();
+            break;
+
+        case '2':
+            buttons[13].click();
+            break;
+
+        case '3':
+            buttons[14].click();
+            break;
+
+        case '-':
+            buttons[15].click();
+            break;
+
+        case '0':
+            buttons[16].click();
+            break;
+
+        case '.':
+            buttons[17].click();
+            break;
+
+        case 'Enter':
+            buttons[18].click();
+            break;
+
+        case '+':
+            buttons[19].click();
+            break;
     }
 })
 
