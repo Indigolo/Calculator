@@ -71,13 +71,21 @@ buttons.forEach(button => {
     }
 
     else if(button.textContent == 'AC'){
-        button.addEventListener('click', () =>result.textContent = '0')
+        button.addEventListener('click', () => {
+            buttons[17].disabled = false;
+            result.textContent = '0';
+        })
     }
 
     else{
         button.addEventListener('click', () => {
             if(result.textContent == '0'){
                 result.textContent = button.textContent;
+            }
+
+            else if(button.textContent == '.'){
+                result.textContent += button.textContent;
+                button.disabled = true;
             }
 
             else{
