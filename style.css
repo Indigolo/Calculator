@@ -3,6 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: lightslategray;
 }
 
 #container {
@@ -12,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    border: 1px solid gray;
+    border: 2px solid black;
     border-radius: 16px;
     padding: 32px;
 
@@ -45,19 +47,17 @@ body {
     justify-items: center;
     align-items: center;
 
-    border: 1px solid gray;
+    border: 1px solid black;
     border-radius: 8px;
     padding: 4px;
 
     background-color:  lightgray;
 }
 
-.number,
-.non-number,
-#enter {
+#buttons > button {
     width: 86px;
     font-size: 24px;
-    border: 1px solid gray;
+    border: 2px solid black;
     padding: 28px;
     border-radius: 8px;
     

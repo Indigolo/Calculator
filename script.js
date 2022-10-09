@@ -1,47 +1,6 @@
 let answer = '';
 
 function calculation(arithmetic){
-    for(let i = 0; i < arithmetic.length; i++){
-        switch(arithmetic[i]){
-            case '%':
-                answer = arithmetic[i - 1] % arithmetic[i + 1];
-                arithmetic.splice(i - 1, 3, answer);
-                i = 0;
-                break;
-
-            case 'x':
-                answer = arithmetic[i - 1] * arithmetic[i + 1];
-                arithmetic.splice(i - 1, 3, answer);
-                i = 0;
-                break;
-
-            case '/':
-                answer = arithmetic[i - 1] / arithmetic[i + 1];
-                arithmetic.splice(i - 1, 3, answer);
-                i = 0;
-                break;
-        }
-    }
-
-    for(let i = 0; i < arithmetic.length; i++){
-        switch(arithmetic[i]){
-            case '+':
-                answer = arithmetic[i - 1] + arithmetic[i + 1];
-                arithmetic.splice(i - 1, 3, answer);
-                i = 0;
-                break;
-
-            case '-':
-                answer = arithmetic[i - 1] - arithmetic[i + 1];
-                arithmetic.splice(i - 1, 3, answer);
-                i = 0;
-                break;
-        }
-    }
-}
-
-
-function calculation2(arithmetic){
     let tempAnswer = 0;
 
     let tempArithmetic = arithmetic;
@@ -71,7 +30,7 @@ function calculation2(arithmetic){
     for(let i = 0; i < tempArithmetic.length; i++){
         switch(tempArithmetic[i]){
             case '+':
-                tempAnswer = tempArithmetic[i - 1] + tempArithmetic[i + 1];
+                tempAnswer = Number(tempArithmetic[i - 1]) + Number(tempArithmetic[i + 1]);
                 tempArithmetic.splice(i - 1, 3, tempAnswer);
                 i = 0;
                 break;
@@ -106,22 +65,29 @@ function countPriority(arithmetic){
 const result = document.querySelector('#result');
 const buttons = document.querySelectorAll('button');
 
-const AC = buttons[3];
-
-const enter = buttons[18];
-
-
-//delete .number
-
 buttons.forEach(button => {
     if(button.textContent == ' = '){
         return;
     }
 
+    else if(button.textContent == 'AC'){
+        button.addEventListener('click', () =>result.textContent = '0')
+    }
+
     else{
-        button.addEventListener('click', () => result.textContent += button.textContent);
+        button.addEventListener('click', () => {
+            if(result.textContent == '0'){
+                result.textContent = button.textContent;
+            }
+
+            else{
+                result.textContent += button.textContent;
+            }
+        });
     }
 })
+
+const enter = buttons[18];
 
 enter.addEventListener('click', () => {
     let arithmetic = result.textContent.split(' ');
@@ -137,7 +103,7 @@ enter.addEventListener('click', () => {
             console.log(arithmetic)
             console.log(priority)
 
-            arithmetic.splice(leftIndex[0], rightIndex[0] - leftIndex[0] + 1, calculation2(priority));
+            arithmetic.splice(leftIndex[0], rightIndex[0] - leftIndex[0] + 1, calculation(priority));
 
             countPriority(arithmetic);
         }     
@@ -148,10 +114,8 @@ enter.addEventListener('click', () => {
     }
 
     else{
-        answer = calculation2(arithmetic);
+        answer = calculation(arithmetic);
     }
 
     result.textContent = Number(answer);
 });
-
-AC.addEventListener('click', () => result.textContent = '');
